@@ -1,0 +1,27 @@
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+    {{#each products.headers}}
+      <th scope="col">{{this}}</th>
+    {{/each}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products.data}}
+    <tr>
+      <th scope="row">
+      {{#with this}}
+        <td>{{ProductID}}</td>
+        <td>{{Name}}</td>
+        <td>{{Color}}</td>
+        <td>{{StandardCost}}</td>
+        <td>{{ListPrice}}</td>
+        <td>{{Size}}</td>
+        <td>{{Weight}}</td>
+        <td>{{DaysToManufacture}}</td>
+      {{/with}}
+      </th>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
