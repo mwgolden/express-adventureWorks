@@ -6,7 +6,7 @@ const port = 3000
 
 app.engine('handlebars', exphbs())
 app.set('view engine', 'handlebars')
-
+app.use(express.static(__dirname + '/public'))
 
 app.get('/', (req, res) => {
   sqlConnection.getProducts(res)
