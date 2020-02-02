@@ -1,5 +1,17 @@
 <div class="container">
-  <p>Row Count: {{dataCount products.data}}</p>
+  <div class="row pagination">
+    <span class="col">{{outputRange}}</span>
+    <div class="col">
+      <a href="/Catalog?page={{previousPage products.CurrentPage}}&rows={{products.RowsPerPage}}">
+          <<
+      </a>
+
+      <a href="/Catalog?page={{nextPage products.CurrentPage}}&rows={{products.RowsPerPage}}">
+          >>
+      </a>
+    </div>
+  </div>
+
   <table class="table">
     <thead>
       <tr>
@@ -14,7 +26,6 @@
         {{#with this}}
           <td>{{ProductID}}</td>
           <td>{{Name}}</td>
-          <td>{{Color}}</td>
           <td>{{StandardCost}}</td>
           <td>{{ListPrice}}</td>
           <td>{{Size}}</td>
