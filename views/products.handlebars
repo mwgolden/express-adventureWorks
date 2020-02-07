@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row pagination">
-    <span class="col">{{outputRange}}</span>
+    <span class="col">{{outputRange products.CurrentPage products.RowsPerPage}}</span>
     <div class="col">
       <a href="/Catalog?page={{previousPage products.CurrentPage}}&rows={{products.RowsPerPage}}">
           <<
