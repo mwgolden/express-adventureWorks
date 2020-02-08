@@ -12,7 +12,14 @@ app.set('view engine', 'handlebars')
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', (req, res) => {
-  res.send('Hello World')
+  p = repo.products(15, 25)
+  p.then(
+    response => {
+      res.send(response)
+    }
+  )
+
+
 })
 
 app.get('/Catalog', (req, res) => {

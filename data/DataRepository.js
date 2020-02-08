@@ -1,4 +1,5 @@
 const db = require('./SQLConnection')
+const req = require('./SQLRequest')
 const product = require('../model/Product')
 const Request = require('tedious').Request
 const TYPES = require('tedious').TYPES;
@@ -50,5 +51,36 @@ function getProducts(page, rowsPerPage){
     });
   })
 }
+function getProducts2(page, rows){
+  return new Promise((resolve, reject) => {
+    products = []
+    conn = db.DBConnection()
+    conn.then(
+      conn => {
+        reqParams = [
+          {
+            Name: 'page',
+            Type: TYPES.Int,
+            Value: page
+          },
+          {
+            Name: 'rows',
+            Type: TYPES.Int,
+            Value: rows
+          }
+        ]
+        request = req.callStoredProcedure(conn, 'spGetProducts', reqParams)
+        request.then(
+          result => {
+            products = result
+            conn.close()
+            resolve(products)
+          }
+        )
+      }
+    )
+  })
+}
 
 exports.getProducts = getProducts
+exports.products = getProducts2
